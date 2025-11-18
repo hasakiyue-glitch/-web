@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>天华人工智能科创园 | {% block tt %}{% endblock %}</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style0.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+ 
+<body>
+<!-- logostart -->   
+<div class="containter top">
+    <div class="row">
+        <div class="col-md-6">
+            <a>
+                
+            </a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+            <a class="phone ant">
+                <span class="glyphicon glyphicon-phone"></span>电话：021-59960662&nbsp;&nbsp;
+            </a>
+        </div>
+        <div class="col-md-3 hidden-xs">
+            <a class="mail ant">
+                <span class="glyphicon glyphicon-envelope"></span>邮箱：cyq@th.com&nbsp;&nbsp;
+            </a>
+        </div>
+    </div>
+    </div>
+     <!-- logoend -->
+       <!-- 导航条 -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+           
+                   <div class="collapse navbar-collapse" id="bs-example">
+                <ul class="nav navbar-nav" style="width:100%;">
+                    <li class="active nav-top">
+                        <a href="{% url 'home' %}">主页</a>
+                    </li>
+                    <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            园区概况</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'test2:tt1' %}">园区简介</a></li>
+                            <li><a href="{% url 'test2:tt2' 'movie' %}">区位优势</a></li>
+                        </ul>
+                    </li>
+
+                   <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            产业定位</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'test3:test3' 'pass' %}">AI产业数据分析平台</a></li>
+                            <li><a href="{% url 'test1:test1' %}">软件产业配套</a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            园区规划</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'chat:chat' %}">
+                                    一期建设</a></li>
+                            <li><a href="{% url 'chat:load' %}">
+                                    二期规划</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            校企合作</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">
+                                    合作模式</a></li>
+                            <li><a href="#">
+                                    高校资源</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            政策资源</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'rczp:contact' %}">政策支持</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown nav-top">
+                        <a href="#" class="dropdown-toggle on" data-toggle="dropdown">
+                            招商合作</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">
+                                    招商对象</a></li>
+                            <li><a href="#">
+                                    联系我们</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--导航条结束--> 
+    <div class="line"></div>
+    {% block content %}{% endblock %}
+     <!-- 制作页脚-->
+     <br>
+     <div class="container web-footer" style="display: block;">
+         <!-- 站点地图-->
+          <div class="row" id="map-footer">
+            
+             <div class="col-md-2">
+                 <dl>
+                     <dt>关于园区</dt>
+                     <dd><a href="#">园区简介</a></dd>
+                     <dd><a href="#">区位优势</a></dd>
+                 </dl>
+             </div>
+             <div class="col-md-2">
+                 <dl>
+                     <dt>核心产业</dt>
+                     <dd><a href="#">人工智能</a></dd>
+                     <dd><a href="#">智能机器人</a></dd>
+                     <dd><a href="#">软件配套</a></dd>
+                 </dl>
+             </div>
+             <div class="col-md-2">
+                 <dl>
+                     <dt>园区服务</dt>
+                     <dd><a href="#">政策支持</a></dd>
+                 </dl>
+             </div>
+             <div class="col-md-2">
+                 <dl>
+                     <dt>校企合作</dt>
+                     <dd><a href="#">合作模式</a></dd>
+                     <dd><a href="#">实训基地</a></dd>
+                 </dl>
+             </div>
+             <div class="col-md-4" id="wx">
+                 <p>加入天华科创园！</p>
+                 
+                 <p>招商热线：<b style="font-size:20px">021-59960662</b></p>
+                 <p>联系人：李先生、彭先生</p>
+             </div>
+         </div> 
+         <!-- 版权-->
+         <div class="row" id="patent-footer">
+             <p>© 2023 天华人工智能科创园 版权所有</p>
+             <p>地址：上海市嘉定区城北路与汇发路交界处</p>
+         </div>
+     </div>
+      <!-- 页脚结束-->
+      <script>
+        $(function()
+        {
+            $(".dropdown").mouseover(function()
+            {
+                $(this).addClass("open")
+            })
+        })
+        $(function()
+        {
+            $(".dropdown").mouseleave(function()
+            {
+                $(this).removeClass("open")
+            })
+        })
+      </script>
+</body>
+</html>

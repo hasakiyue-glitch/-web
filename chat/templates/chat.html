@@ -1,0 +1,342 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+园区规划建设
+{% endblock %}
+{% block content %}
+<link href="{% static 'css/planning.css' %}" rel="stylesheet">
+
+<!-- 园区规划特色展示 -->
+<div class="container planning-features">
+    <div class="section-header text-center">
+        <h1><i class="glyphicon glyphicon-th-large"></i> 园区规划特色</h1>
+        <p class="lead">灵活空间设计，满足多样化企业需求</p>
+    </div>
+    
+    <div class="row feature-item">
+        <div class="col-md-6">
+            <div class="feature-text">
+                <h2><span class="feature-number">01</span> 模块化设计</h2>
+                <p>27幢小楼采用灵活的空间布局，可根据企业需求定制内部结构，支持办公、研发或展示功能。</p>
+                <div class="feature-highlight">
+                    <i class="glyphicon glyphicon-ok"></i> 可定制空间：200-2000㎡<br>
+                    <i class="glyphicon glyphicon-ok"></i> 最短装修周期：15天<br>
+                    <i class="glyphicon glyphicon-ok"></i> 多功能区域转换技术
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="feature-image">
+                <!-- 这里替换为实际的27幢小楼效果图 -->
+                <img src="{% static 'media/8.jpg' %}" alt="模块化设计建筑效果图" class="img-responsive img-thumbnail">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row feature-item">
+        <div class="col-md-6">
+            <div class="feature-image">
+                <!-- 这里替换为实际的服务大楼效果图 -->
+                <img src="{% static 'media/10.jpg' %}" alt="综合服务大楼效果图" class="img-responsive img-thumbnail">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="feature-text">
+                <h2><span class="feature-number">02</span> 综合服务中心</h2>
+                <p>1.7万平方米大楼提供一站式商务与生活配套，解决企业后顾之忧。</p>
+                <div class="feature-highlight">
+                    <i class="glyphicon glyphicon-ok"></i> 商务服务：会议中心/路演厅<br>
+                    <i class="glyphicon glyphicon-ok"></i> 生活配套：智能餐厅/健身中心<br>
+                    <i class="glyphicon glyphicon-ok"></i> 专业服务：法律/财务/人才服务
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row feature-item">
+        <div class="col-md-6">
+            <div class="feature-text">
+                <h2><span class="feature-number">03</span> 企业成长型设计</h2>
+                <p>从初创企业到成熟公司，从研发团队到生产单位，二期建筑群满足不同发展阶段的需求。</p>
+                <div class="feature-highlight">
+                    <i class="glyphicon glyphicon-ok"></i> 创业孵化：共享办公空间<br>
+                    <i class="glyphicon glyphicon-ok"></i> 成长加速：可扩展办公单元<br>
+                    <i class="glyphicon glyphicon-ok"></i> 总部基地：定制化企业独栋
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="feature-image">
+                <!-- 这里替换为实际的二期建筑群效果图 -->
+                <img src="{% static 'media/9.jpg' %}" alt="二期建筑群效果图" class="img-responsive img-thumbnail">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 互动规划展示系统 -->
+<div class="interactive-planning">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="glyphicon glyphicon-map-marker"></i> 园区总览图</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="planning-map">
+                            <!-- 这里放置园区规划图 -->
+                            <img src="{% static 'media/zlt.png' %}" alt="园区总体规划图" class="img-responsive">
+                            <div class="map-legend">
+                                <span class="legend office">办公区</span>
+                                <span class="legend research">研发区</span>
+                                <span class="legend production">生产区</span>
+                                <span class="legend green">生态绿化</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="planning-details">
+                            <h4>空间规划数据</h4>
+                            <ul>
+                                <li><i class="glyphicon glyphicon-tower"></i> 总用地面积：128亩</li>
+                                <li><i class="glyphicon glyphicon-home"></i> 总建筑面积：18万㎡</li>
+                                <li><i class="glyphicon glyphicon-tree-conifer"></i> 绿化覆盖率：35%</li>
+                                <li><i class="glyphicon glyphicon-road"></i> 路网密度：15公里/平方公里</li>
+                                <li><i class="glyphicon glyphicon-flash"></i> 智慧园区系统覆盖率：100%</li>
+                            </ul>
+                            <div class="resource-download">
+                                <h4>规划资料下载</h4>
+                                <a href="#" class="btn btn-info">
+                                    <i class="glyphicon glyphicon-download"></i> 总体规划图(PDF)
+                                </a>
+                                <a href="#" class="btn btn-info">
+                                    <i class="glyphicon glyphicon-download"></i> 建筑参数说明
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 园区建设意见征集 -->
+<div class="container planning-feedback">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><i class="glyphicon glyphicon-bullhorn"></i> 建设意见征集</h2>
+        </div>
+        <div class="panel-body">
+            <p class="text-center lead">您的意见将帮助我们打造更完善的产业环境</p>
+            
+            <form name='planning_form' method='POST' action='/chat/'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>您最关注园区的哪项特色？</label>
+                    <div class="feature-choice">
+                        <label class="radio-inline">
+                            <input type="radio" name="feature" value="模块化设计"> 灵活空间
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="feature" value="综合服务"> 服务配套
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="feature" value="适应性"> 成长支持
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="feature" value="智能设施"> 智慧园区
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_id">您的身份：</label>
+                    <select class="form-control" id="user_type" name="user_type">
+                        <option value="企业代表">园区企业代表</option>
+                        <option value="意向企业">意向入驻企业</option>
+                        <option value="行业专家">行业专家</option>
+                        <option value="投资机构">投资机构</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_comment">您的建议：</label>
+                    <textarea class="form-control" id="user_comment" name="user_comment" rows="4" placeholder="请提出您对园区规划的建设性意见"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_id">昵称：</label>
+                    <input class="form-control" type="text" id="user_id" name="user_id">
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_pass">联系方式（手机/邮箱）：</label>
+                    <input class="form-control" type="text" id="user_contact" name="user_contact">
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">提交建议</button>
+                    <button type="reset" class="btn btn-default">重新填写</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="feedback-list">
+        <h3><i class="glyphicon glyphicon-comment"></i> 公众建议摘录</h3>
+        <div class="row">
+            {% for p in posts %}
+            <div class="col-md-4">
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        【{{ p.user_type }}】{{ p.user_id }}
+                    </div>
+                    <div class="feedback-body">
+                        {{ p.user_comment }}
+                        <div class="feature-tag">
+                            关注：{{ p.feature }}
+                        </div>
+                    </div>
+                    <div class="feedback-footer">
+                        {{ p.pub_time|date:"Y-m-d" }}
+                        <span class="contact-info">{{ p.user_contact }}</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    暂未收到公众建议，期待您的宝贵意见！
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 园区规划特色 */
+    .planning-features {
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+    .feature-item {
+        margin: 30px 0;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .feature-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #2196F3;
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+    .feature-text h2 {
+        color: #2c3e50;
+        margin-top: 0;
+    }
+    .feature-highlight {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 20px;
+        border-left: 4px solid #4CAF50;
+    }
+    
+    /* 互动规划区域 */
+    .interactive-planning {
+        background: #eef7ff;
+        padding: 30px 0;
+        margin: 40px 0;
+    }
+    .planning-map {
+        position: relative;
+        border: 1px solid #ddd;
+        padding: 10px;
+        background: white;
+    }
+    .map-legend {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(255,255,255,0.8);
+        padding: 10px;
+        border-radius: 4px;
+    }
+    .legend {
+        display: inline-block;
+        padding: 2px 8px;
+        margin-right: 5px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .legend.office { background: #e3f2fd; }
+    .legend.research { background: #fff8e1; }
+    .legend.production { background: #ffebee; }
+    .legend.green { background: #e8f5e9; }
+    
+    .planning-details ul {
+        padding-left: 20px;
+    }
+    .planning-details li {
+        margin-bottom: 10px;
+    }
+    .resource-download {
+        margin-top: 30px;
+    }
+    .resource-download .btn {
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    /* 建议征集 */
+    .planning-feedback {
+        margin-bottom: 40px;
+    }
+    .feedback-card {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        height: 280px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .feedback-header {
+        background: #f8f9fa;
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+        font-weight: bold;
+    }
+    .feedback-body {
+        padding: 15px;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+    .feature-tag {
+        background: #e3f2fd;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .feedback-footer {
+        background: #f5f5f5;
+        padding: 8px 15px;
+        font-size: 12px;
+        color: #666;
+    }
+    .contact-info {
+        float: right;
+    }
+</style>
+{% endblock %}

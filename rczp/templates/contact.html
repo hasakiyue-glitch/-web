@@ -1,0 +1,328 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+政策支持中心
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- 替换为政策支持相关图片 -->
+        <img class="img-responsive model-img" src="{% static 'img/policy-banner.jpg' %}" alt="政策支持中心">
+    </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+    <div class="row row-3">
+        <!-- 侧边导航栏 -->
+        <div class="col-md-3">
+            <div class="model-title">
+                政策支持中心
+            </div>
+            <div class="model-list">
+                <ul class="list-group">
+                    <li class="list-group-item active" id="consulting">
+                        <a href="{% url 'rczp:contact' %}">政策咨询</a>
+                    </li>
+                    <li class="list-group-item" id="funding">
+                        <a href="{% url 'rczp:recruit' %}">资金扶持申请</a>
+                    </li>
+                    <li class="list-group-item" id="tax">
+                        <a href="#">税收优惠政策</a>
+                    </li>
+                    <li class="list-group-item" id="talent">
+                        <a href="#">人才引进政策</a>
+                    </li>
+                    <li class="list-group-item" id="application">
+                        <a href="#">政策申报指南</a>
+                    </li>
+                </ul>
+                
+                <!-- 政策日历 -->
+                <div class="policy-calendar">
+                    <h4>政策申报日历</h4>
+                    <div class="calendar-item">
+                        <div class="date">8月15日</div>
+                        <div class="event">高新技术企业认定申报截止</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="date">9月30日</div>
+                        <div class="event">AI专项研发补贴申请截止</div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="date">10月15日</div>
+                        <div class="event">中小科技企业贷款贴息申报</div>
+                    </div>
+                    <a href="#" class="btn btn-sm btn-info">查看全部</a>
+                </div>
+            </div>
+        </div>
+        <!-- 政策内容区 -->
+        <div class="col-md-9">
+            <div class="model-details-title">
+                政策咨询与服务
+            </div>
+            
+            <div class="policy-intro">
+                <h3>天华科创园专项政策支持体系</h3>
+                <p>园区针对人工智能与机器人产业提供全方位政策支持，助力企业快速成长：</p>
+                <div class="policy-benefits">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="benefit-card">
+                                <i class="glyphicon glyphicon-yen"></i>
+                                <h4>研发补贴</h4>
+                                <p>最高1000万AI研发专项补贴</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="benefit-card">
+                                <i class="glyphicon glyphicon-scale"></i>
+                                <h4>税收减免</h4>
+                                <p>企业所得税"两免三减半"优惠</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="benefit-card">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <h4>场地支持</h4>
+                                <p>租金减免+空间定制支持</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 园区建筑特色与政策结合 -->
+            <div class="building-policy">
+                <h3><i class="glyphicon glyphicon-thumbs-up"></i> 专项政策匹配园区空间特色</h3>
+                <div class="row policy-feature">
+                    <div class="col-md-6">
+                        <div class="feature-content">
+                            <h4>模块化办公空间政策</h4>
+                            <p>针对园区的27幢模块化设计小楼，我们提供：</p>
+                            <ul>
+                                <li>首年租金全免，次年租金30%减免</li>
+                                <li>20万元/单元的空间定制补贴</li>
+                                <li>共享实验室免费使用额度</li>
+                            </ul>
+                            <a href="#" class="btn btn-success">查看政策详情</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-image">
+                            <!-- 使用提供的建筑特色图片 -->
+                            <img alt="模块化设计建筑" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row policy-feature">
+                    <div class="col-md-6">
+                        <div class="feature-image">
+                            <!-- 使用提供的建筑特色图片 -->
+                            <img alt="综合服务大楼" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-content">
+                            <h4>综合服务楼专项支持</h4>
+                            <p>1.7万㎡综合服务大楼提供全方位商务支持：</p>
+                            <ul>
+                                <li>免费使用会议中心200小时/年</li>
+                                <li>法律财税顾问服务包免费配给</li>
+                                <li>员工餐饮补贴每人每月500元</li>
+                            </ul>
+                            <a href="#" class="btn btn-success">查看政策详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 咨询表单 -->
+            <div class="policy-consult">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">政策咨询</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">企业名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="请输入企业全称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">联系人</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="请输入联系人姓名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">联系方式</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" placeholder="手机/电话">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">咨询事项</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>请选择咨询的政策类型</option>
+                                        <option>研发补贴政策</option>
+                                        <option>税收优惠政策</option>
+                                        <option>人才引进政策</option>
+                                        <option>场地支持政策</option>
+                                        <option>其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">咨询内容</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="4" placeholder="请详细描述您的问题或需求"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">提交咨询</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h4><i class="glyphicon glyphicon-earphone"></i> 政策咨询热线</h4>
+                        <div class="info-item">
+                            <strong>张女士（政策咨询）</strong><br>
+                            电话：021-59961234<br>
+                            邮箱：policy@tianhua.ai
+                        </div>
+                        <div class="info-item">
+                            <strong>李先生（资金申请）</strong><br>
+                            电话：021-59965678<br>
+                            邮箱：funding@tianhua.ai
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="glyphicon glyphicon-time"></i> 服务时间</h4>
+                        <p>周一至周五：9:00-17:30<br>
+                        周六：9:00-12:00（政策咨询）<br>
+                        地址：嘉定区城北路1号天华科创园政策服务中心</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 政策特色卡片 */
+    .policy-benefits .benefit-card {
+        text-align: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        border: 1px solid #e3e7ea;
+    }
+    .benefit-card i {
+        font-size: 40px;
+        color: #2196F3;
+        margin-bottom: 15px;
+    }
+    .benefit-card h4 {
+        color: #2c3e50;
+    }
+    
+    /* 建筑与政策特色区域 */
+    .building-policy {
+        margin: 30px 0;
+        border-top: 1px solid #eee;
+        padding-top: 30px;
+    }
+    .policy-feature {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .feature-content {
+        padding: 15px;
+    }
+    .feature-content h4 {
+        color: #0d47a1;
+        margin-top: 0;
+    }
+    .feature-content ul {
+        padding-left: 20px;
+    }
+    .feature-content li {
+        margin-bottom: 8px;
+    }
+    .feature-image img {
+        border: 1px solid #ddd;
+        padding: 5px;
+        border-radius: 4px;
+    }
+    
+    /* 咨询表单 */
+    .policy-consult .panel-primary .panel-heading {
+        background: #0d47a1;
+    }
+    .policy-consult .panel-body {
+        padding: 30px;
+    }
+    
+    /* 联系方式卡片 */
+    .contact-info {
+        display: flex;
+        margin-top: 20px;
+    }
+    .info-card {
+        flex: 1;
+        background: #f0f8ff;
+        padding: 20px;
+        border-radius: 4px;
+        margin-right: 20px;
+        border: 1px solid #bbdefb;
+    }
+    .info-card:last-child {
+        margin-right: 0;
+    }
+    .info-card h4 {
+        color: #1565c0;
+        margin-top: 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #bbdefb;
+    }
+    .info-item {
+        padding: 10px 0;
+        border-bottom: 1px dashed #d1e6ff;
+    }
+    
+    /* 政策日历 */
+    .policy-calendar {
+        margin-top: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        padding: 15px;
+    }
+    .policy-calendar h4 {
+        margin-top: 0;
+        color: #0d47a1;
+    }
+    .calendar-item {
+        display: flex;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed #eee;
+    }
+    .calendar-item .date {
+        width: 70px;
+        font-weight: bold;
+        color: #d32f2f;
+    }
+</style>
+{% endblock %}

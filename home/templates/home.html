@@ -1,0 +1,421 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+首页
+{% endblock %}
+{% block content %}
+<script src="{% static 'js/jqthumb.min.js' %}"></script>
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<style>
+  .carousel-indicators li {
+    border: 1px solid #333;
+  }
+  .carousel-indicators .active {
+    background-color: #333;
+  }
+  .nav-title {
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .part1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .en {
+    font-size: 16px;
+    color: #666;
+  }
+  .line1 {
+    height: 1px;
+    background-color: #ddd;
+    margin: 10px 0;
+  }
+  .line2 {
+    height: 3px;
+    background-color: #d30a1c;
+    width: 80px;
+  }
+  .more-btn {
+    float: right;
+    margin-top: 5px;
+  }
+  .list-new li {
+    border-bottom: 1px dashed #eee;
+    padding: 8px 0;
+  }
+  .list-new li a {
+    color: #333;
+  }
+  .list-new li a:hover {
+    color: #d30a1c;
+    text-decoration: none;
+  }
+  .public-detail {
+    float: right;
+    color: #d30a1c;
+  }
+  .pro-images {
+    margin-bottom: 20px;
+  }
+  .procurement-li li {
+    padding: 5px 0;
+  }
+  .platform a {
+    display: inline-block;
+    background-color: #d30a1c;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+</style>
+
+<!-- 顶部轮播 -->
+<div id="ad" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <ol class="carousel-indicators">
+    <li data-target="#ad" data-slide-to="0" class="active"></li>
+    <li data-target="#ad" data-slide-to="1"></li>
+    <li data-target="#ad" data-slide-to="2"></li>
+    <li data-target="#ad" data-slide-to="3"></li>
+    <li data-target="#ad" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="{% static 'media/lb/01.jpg' %}" alt="广告横幅1" class="img-responsive center-block">
+    </div>
+    <div class="item">
+      <img src="{% static 'media/lb/02.jpg' %}" alt="广告横幅2" class="img-responsive center-block">
+    </div>
+    <div class="item">
+      <img src="{% static 'media/lb/03.jpg' %}" alt="广告横幅3" class="img-responsive center-block">
+    </div>
+    <div class="item">
+  </div>
+  <a class="left carousel-control" href="#ad" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">上一张</span>
+  </a>
+  <a class="right carousel-control" href="#ad" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">下一张</span>
+  </a>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-md-4">
+      <div class="section-header">
+        <span class="part1">
+          <a href="{% url 'test2:tt1' %}">园区简介</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ About Enterprise Zone
+        </span>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      <div class="section-content">
+        <img class="img-responsive center-block" src="{% static 'media/logo.jpg' %}" style="height: 200px;">
+        <p class="text1" style="margin-top: 15px;">
+              提供高性能计算支持，推动算法优化与数据处理能力提升，构建数据生态，
+          为企业提供从采集到应用的完整解决方案。
+          支撑AI与机器人产业的软件开发与系统集成，助力企业实现技术落地与商业化转化。
+        </p>
+      </div>
+    </div>
+    
+
+    <div class="col-md-8">
+      <div class="section-header">
+        <span class="part1">
+          <a href="#">园区风貌</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ Likes
+        </span>
+        <a class="btn btn-default btn-xs more-btn" href="{% url 'test2:tt2' 'movie' %}">
+          +&nbsp;更多
+        </a>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- 新闻轮播 -->
+        <div class="col-md-5">
+          <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators nav-point">
+              {% for post in postList %}
+              <li data-target="#newsCarousel" data-slide-to="{{forloop.counter0}}" {% if forloop.first %}class="active"{% endif %}></li>
+              {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+              {% for post in postList %}
+              <div {% if forloop.first %}class="item active"{% else %}class="item"{% endif %}>
+                <a href="{% url 'test2:newdetail' post.id %}">
+                  <img src="{{post.photo.url}}" class="img-responsive center-block" alt="{{post.title}}" onload="DrawImage(this)">
+                </a>
+                <div class="carousel-caption nav-title">{{post.title}}</div>
+              </div>
+              {% endfor %}
+            </div>
+            <a class="left carousel-control" href="#newsCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              <span class="sr-only">上一张</span>
+            </a>
+            <a class="right carousel-control" href="#newsCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+              <span class="sr-only">下一张</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 新闻列表 -->
+        <div class="col-md-7">
+          <ul class="list-unstyled list-new">
+            {% for mynew in newList %}
+            <li>
+              <a href="{% url 'test2:newdetail' mynew.id %}">
+                {{mynew.title|truncatechars:"25"}}
+              </a>
+              <span class="pull-right">【{{mynew.publishDate|date:"Y-m-d"}}】</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 第二行：杂文趣事 + 影视电视 + 联系我们 -->
+  <div class="row" style="margin-top: 30px;">
+    <!-- 杂文趣事 -->
+    <div class="col-md-4">
+      <div class="section-header">
+        <span class="part1">
+          <a href="#">招商动态</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ We need you!
+        </span>
+        <a class="btn btn-default btn-xs more-btn" href="{% url 'test2:tt2' 'qs' %}">
+          +&nbsp;更多
+        </a>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      <div class="section-content">
+        <img class="img-responsive center-block" src="{% static 'media/zsgg.jpg' %}" alt="杂文趣事图片">
+        <ul class="list-unstyled list-new">
+          {% for note in noteList %}
+          <li>
+            <a href="{% url 'test2:newdetail' note.id %}">
+              {{note.title|truncatechars:"25"}}
+            </a>
+            <a href="{% url 'test2:newdetail' note.id %}" class="public-detail">
+              查看详情>>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 影视电视 -->
+    <div class="col-md-4">
+      <div class="section-header">
+        <span class="part1">
+          <a href="{% url 'test3:test3' 'pass' %}">产业服务</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ Technology Center
+        </span>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      <div class="section-content">
+        <a href="{% url 'test3:test3' 'pass' %}">
+          <img class="img-responsive center-block" src="{% static 'media/aicy.png' %}" alt="影视电视图片">
+        </a>
+        <p class="text1">
+          <font color="#d30a1c">全链条产业服务</font>
+        </p>
+      </div>
+      <div class="service-intro">
+    <h4>全链条产业服务</h4>
+    <ul class="service-list">
+        <li><i class="glyphicon glyphicon-wrench"></i> 研发技术支持平台</li>
+        <li><i class="glyphicon glyphicon-piggy-bank"></i> 千万级专项资金池</li>
+        <li><i class="glyphicon glyphicon-home"></i> 定制化办公空间</li>
+        <li><i class="glyphicon glyphicon-education"></i> 高校人才直通车</li>
+    </ul>
+    </div>
+    </div>
+    
+    <!-- 联系我们 -->
+    <div class="col-md-4">
+      <div class="section-header">
+        <span class="part1">
+          <a href="{% url 'rczp:contact' %}">有关我们</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ Contact us
+        </span>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      <div class="section-content">
+        <ul class="list-unstyled procurement-li">
+           <li><i class="glyphicon glyphicon-phone"></i> 招商热线：021-59960662</li>
+          <li><i class="glyphicon glyphicon-phone"></i> 企业服务：021-59960663</li>
+          <li><i class="glyphicon glyphicon-phone"></i> 园区办公室：021-59960664</li>
+          <li><i class="glyphicon glyphicon-map-marker"></i> 地址：上海市嘉定区城北路与汇发路交界处</li>
+          <li><i class="glyphicon glyphicon-envelope"></i> 邮箱：contact@tianhua.ai</li>
+          <li><i class="glyphicon glyphicon-globe"></i> 网址：<a href="https://www.sthu.edu.cn/">天华学院官网</a></li>
+        </ul>
+        <div class="platform"><a href="{% url 'rczp:contact' %}">详情</a></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 第三行：电视剧图片 -->
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+      <div class="section-header">
+        <span class="part1">
+          <a href="{% url 'test3:test3' 'pass' %}">园区环境图</a>
+        </span>
+        <span class="part1 en">
+          &nbsp;&nbsp;/ 企业活动图
+        </span>
+        <a class="btn btn-default btn-xs more-btn" href="{% url 'test3:test3' 'pass' %}">
+          +&nbsp;更多
+        </a>
+        <div class="line1">
+          <div class="line2 theme"></div>
+        </div>
+      </div>
+      
+      <div id="TVCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#TVCarousel" data-slide-to="0" class="active"></li>
+          <!-- 如果TVList项数超过4，添加更多指示器 -->
+          {% if TVList|length > 4 %}
+            <li data-target="#TVCarousel" data-slide-to="1"></li>
+          {% endif %}
+          {% if TVList|length > 8 %}
+            <li data-target="#TVCarousel" data-slide-to="2"></li>
+          {% endif %}
+        </ol>
+        
+        <div class="carousel-inner">
+          <!-- 第一页 -->
+          <div class="item active">
+            <div class="row">
+              {% for tv in TVList|slice:":4" %}
+              <div class="col-md-3 col-sm-6 pro-images">
+                <a href="{% url 'test3:TVdetail' tv.id %}" class="thumbnail">
+                  {% for img in tv.TVImgs.all %}
+                  {% if forloop.first %}
+                  <img src="{{img.photo.url}}" alt="{{tv.title}}" class="img-responsive" onload="DrawImage(this)">
+                  {% endif %}
+                  {% endfor %}
+                </a>
+                <div class="text-center">{{tv.title}}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <!-- 第二页（如果有足够的项） -->
+          {% if TVList|length > 4 %}
+          <div class="item">
+            <div class="row">
+              {% for tv in TVList|slice:"4:8" %}
+              <div class="col-md-3 col-sm-6 pro-images">
+                <a href="{% url 'test3:TVdetail' tv.id %}" class="thumbnail">
+                  {% for img in tv.TVImgs.all %}
+                  {% if forloop.first %}
+                  <img src="{{img.photo.url}}" alt="{{tv.title}}" class="img-responsive" onload="DrawImage(this)">
+                  {% endif %}
+                  {% endfor %}
+                </a>
+                <div class="text-center">{{tv.title}}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          
+          <!-- 第三页（如果有足够的项） -->
+          {% if TVList|length > 8 %}
+          <div class="item">
+            <div class="row">
+              {% for tv in TVList|slice:"8:12" %}
+              <div class="col-md-3 col-sm-6 pro-images">
+                <a href="{% url 'test3:TVdetail' tv.id %}" class="thumbnail">
+                  {% for img in tv.TVImgs.all %}
+                  {% if forloop.first %}
+                  <img src="{{img.photo.url}}" alt="{{tv.title}}" class="img-responsive" onload="DrawImage(this)">
+                  {% endif %}
+                  {% endfor %}
+                </a>
+                <div class="text-center">{{tv.title}}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        
+        <a class="left carousel-control" href="#TVCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">上一页</span>
+        </a>
+        <a class="right carousel-control" href="#TVCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">下一页</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  //处理缩略图
+  function DrawImage(hotimg) {
+    $(hotimg).jqthumb({
+      width: '100%',
+      height: '220px',
+      zoom: '1',
+      method: 'auto'
+    });
+  }
+  
+  // 初始化所有轮播
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 5000
+    });
+    
+    // 为新闻列表添加悬停效果
+    $('.list-new li').hover(
+      function() {
+        $(this).css('background-color', '#f5f5f5');
+      },
+      function() {
+        $(this).css('background-color', 'transparent');
+      }
+    );
+  });
+</script>
+{% endblock %}

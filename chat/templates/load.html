@@ -1,0 +1,14 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+load
+{% endblock %}
+{% block content %}
+{% for doc in docList %}
+<div class="news-model">
+    <a href="{% url 'chat:getDoc' doc.id %}"><b>{{doc.title}}</b></a>
+    <span>【{{doc.publishDate|date:"Y-m-d"}}】</span>
+</div>
+{% endfor %}
+
+{% endblock %}

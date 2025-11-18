@@ -1,0 +1,27 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+电视剧详情
+{% endblock %}
+{% block content %}
+<link href="{% static 'TV.css' %}" rel="stylesheet">
+<!-- 主体内容 -->
+<div class="container">
+    <div class="model-details-product-title">
+        {{tv.title}}
+    </div>
+    <div class="model-details">
+        {% for pic in tv.TVImgs.all %}
+        <div class="row-4">
+            <img class="img-responsive" src="{{pic.photo.url}}">
+        </div>
+        {% endfor %}
+        <h3>园区介绍</h3>
+        <p>
+            {{tv.description|linebreaks}}
+        </p>
+       
+    </div>
+</div>
+
+{% endblock %}

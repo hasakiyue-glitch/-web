@@ -1,0 +1,241 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+AI产业资源 - {{TVstyle}}
+{% endblock %}
+{% block content %}
+<link href="{% static 'css/TV.css' %}" rel="stylesheet">
+<div class="container">
+    <div class="section-header">
+        <div class="ai-banner">
+            <h1><i class="glyphicon glyphicon-stats"></i> AI产业数据分析平台</h1>
+            <p>洞察产业趋势，把握投资机遇，赋能智能经济</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- 侧边导航 -->
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> 产业分析</h3>
+                </div>
+                <div class="list-group">
+                    <a href="{% url 'test3:test3' 'pass' %}" class="list-group-item">
+                        <i class="glyphicon glyphicon-dashboard"></i> 产业图谱
+                    </a>
+                    <a href="{% url 'test3:test3' 'old' %}" class="list-group-item">
+                        <i class="glyphicon glyphicon-signal"></i> 市场趋势
+                    </a>
+                    <div class="list-group-item category">
+                        <h4><i class="glyphicon glyphicon-tag"></i> 产业分类</h4>
+                    </div>
+                    <a href="#" class="list-group-item">人工智能算法</a>
+                    <a href="#" class="list-group-item">智能机器人</a>
+                    <a href="#" class="list-group-item">AI芯片</a>
+                    <a href="#" class="list-group-item">数据服务</a>
+                    <a href="#" class="list-group-item">系统集成</a>
+                </div>
+            </div>
+            
+            <div class="report-card">
+                <div class="card-header">产业报告下载</div>
+                <div class="card-body">
+                    <ul>
+                        <li><a href="#">《2024中国AI产业发展白皮书》</a></li>
+                        <li><a href="#">《长三角机器人产业研究报告》</a></li>
+                        <li><a href="#">《AI算力建设指南》</a></li>
+                    </ul>
+                    <button class="btn btn-block btn-primary">
+                        <i class="glyphicon glyphicon-download"></i> 下载专区
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主体内容 -->
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{TVstyle}}
+                        <span class="badge pull-right">最新数据</span>
+                    </h3>
+                </div>AI企业增长​：
+"AI企业增长32%，年融资超280亿"
+突出产业发展速度和资本热度
+                <div class="panel-body">
+                    {% for TV in TVlist %}
+                    <div class="ai-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {% for img in TV.TVImgs.all %}
+                                {% if forloop.first %}
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <span class="label label-success">{{TV.category|default:"核心产业"}}</span>
+                                        <span class="label label-info">{{TV.date|date:"Y-m"}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-8">
+                                <h3>{{ TV.title }}</h3>
+                                <div class="stats">
+                                    <div class="stat-item">
+                                        <div class="stat-value">¥{{TV.investment|floatformat:"0"}}亿</div>
+                                        <div class="stat-label">投资规模</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value">{{TV.growth|floatformat:"1"}}%</div>
+                                        <div class="stat-label">年增长率</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-value">{{TV.enterprises}}+</div>
+                                        <div class="stat-label">企业数量</div>
+                                    </div>
+                                </div>
+                                <p>{{TV.description|truncatewords_html:50}}</p>
+                                <div class="ai-actions">
+                                    <a href="{% url 'test3:TVdetail' TV.id %}" class="btn btn-primary">
+                                        <i class="glyphicon glyphicon-search"></i> 产业分析
+                                    </a>
+                                    <a href="#" class="btn btn-default">
+                                        <i class="glyphicon glyphicon-download"></i> 报告下载
+                                    </a>
+                                    <a href="#" class="btn btn-success">
+                                        <i class="glyphicon glyphicon-earphone"></i> 投资咨询
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                    {% endfor %}
+
+                    <!-- 分页 -->
+                    {% if pageData %}
+                    <div class="pagination-container">
+                        <div class="pagination-info">
+                            显示 {{pageData.start_index}} - {{pageData.end_index}} 条，共 {{pageData.paginator.count}} 条产业分析
+                        </div>
+                        <ul class="pagination">
+                            {% if pageData.has_previous %}
+                            <li>
+                                <a href="?page={{pageData.previous_page_number}}">
+                                    <i class="glyphicon glyphicon-chevron-left"></i> 上一页
+                                </a>
+                            </li>
+                            {% endif %}
+                            
+                            {% for num in pageData.paginator.page_range %}
+                            {% if pageData.number == num %}
+                            <li class="active"><span>{{num}}</span></li>
+                            {% else %}
+                            <li><a href="?page={{num}}">{{num}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            
+                            {% if pageData.has_next %}
+                            <li>
+                                <a href="?page={{pageData.next_page_number}}">
+                                    下一页 <i class="glyphicon glyphicon-chevron-right"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-map-marker"></i> 产业区域分布</h3>
+                </div>
+                <div class="panel-body">
+                    <img src="{% static 'img/ai-map.jpg' %}" class="img-responsive" alt="AI产业区域分布">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 自定义AI产业样式 */
+    .ai-banner {
+        background: linear-gradient(to right, #0d47a1, #2196f3);
+        color: white;
+        padding: 20px;
+        border-radius: 4px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .ai-banner h1 {
+        margin-top: 0;
+        font-weight: bold;
+    }
+    .ai-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .stats {
+        display: flex;
+        margin: 15px 0;
+        justify-content: space-between;
+    }
+    .stat-item {
+        text-align: center;
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 4px;
+        flex: 1;
+        margin: 0 5px;
+    }
+    .stat-value {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2196f3;
+    }
+    .stat-label {
+        font-size: 12px;
+        color: #666;
+    }
+    .ai-actions {
+        margin-top: 15px;
+    }
+    .report-card {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .report-card .card-header {
+        background: #4caf50;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+    }
+    .report-card .card-body {
+        padding: 15px;
+    }
+    .report-card ul {
+        padding-left: 20px;
+    }
+    .divider {
+        height: 1px;
+        background: #eee;
+        margin: 15px 0;
+    }
+    .pagination-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .category {
+        background: #f5f5f5;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

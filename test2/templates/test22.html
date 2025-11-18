@@ -1,0 +1,115 @@
+{% extends "basic.html"%}
+{% load static %}
+{% block tt %}
+{{newName}} - 招商动态
+{% endblock %}
+{% block content %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet">
+<!-- 顶部横幅 -->
+<div class="container-fluid">
+    <div class="row">
+    </div>天华科创园招商页面
+    </div>
+</div>
+<!-- 主体内容 -->
+<div class="container">
+    <div class="row row-3">
+        <!-- 侧边导航栏 -->
+        <div class="col-md-3">
+            <div class="model-title">
+                招商专区
+            </div>
+            <div class="model-list">
+                <ul class="list-group">
+                    <li class="list-group-item" id='investment'>
+                        <a href="{% url 'test2:tt2' 'movie' %}">投资政策</a>
+                    </li>
+                    <li class="list-group-item" id='success'>
+                        <a href="{% url 'test2:tt2' 'people' %}">成功案例</a>
+                    </li>
+                    <li class="list-group-item" id='space'>
+                        <a href="{% url 'test2:tt2' 'show'  %}">空间入驻</a>
+                    </li>
+                    <li class="list-group-item" id='resource'>
+                        <a href="{% url 'test2:tt2' 'qs'  %}">资源下载</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 说明文字和图片 -->
+        <div class="col-md-9">
+            <div class="model-details-title">
+                {{newName}}
+                <div class="subtitle">一站式企业成长解决方案</div>
+                
+                <form method="get" id='searchform' action="{% url 'haystack_search' %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="搜索：税收优惠/入驻流程/补贴政策..." required />
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-primary" value="查询投资机会" />
+                        </span>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="call-box">
+                <i class="glyphicon glyphicon-earphone"></i>
+                <span>招商热线：<strong>021-59960662</strong>（李先生/彭先生）</span>
+            </div>
+            
+            <div class="model-details">
+                {% for mynew in newList %}
+                <div class="news-model">
+                    <div class="news-icon">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                    </div>
+                    <div class="news-content">
+                        <a href="{% url 'test2:newdetail' mynew.id %}">
+                            <b>{{mynew.title}}</b>
+                            <span class="label label-success">{% cycle '政策' '案例' '资源' '活动' %}</span>
+                        </a>
+                        <span class="publish-date">【{{mynew.publishDate|date:"Y-m-d"}}】</span>
+                        <p>{{mynew.mytxt|truncatechars:"200"}}...</p>
+                        <div class="news-highlight">
+                            <span><i class="glyphicon glyphicon-certificate"></i> 
+                                入驻企业可享{{forloop.counter|add:2}}项专项政策支持</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if pageData %}
+                <div class="paging">
+                    <ul id="pages" class="pagination">
+                        {% if pageData.first %}
+                        <li><a href="?page=1"><i class="glyphicon glyphicon-step-backward"></i> 首页</a></li>
+                        {% endif %}
+                        {% if pageData.left %}
+                        {% if pageData.left_has_more %}
+                        <li class="disabled"><span>...</span></li>
+                        {% endif %}
+                        {% for i in pageData.left %}
+                        <li><a href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                        <li class="active"><a href="?page={{pageData.page}}">{{pageData.page}}</a></li>
+                        {% if pageData.right %}
+                        {% for i in pageData.right %}
+                        <li><a href="?page={{i}}">{{i}}</a></li>
+                        {% endfor %}
+                        {% if pageData.right_has_more %}
+                        <li class="disabled"><span>...</span></li>
+                        {% endif %}
+                        {% endif %}
+                        {% if pageData.last %}
+                        <li><a href="?page={{pageData.total_pages}}">尾页 <i class="glyphicon glyphicon-step-forward"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
