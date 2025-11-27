@@ -1,0 +1,8 @@
+{
+  "name": "VolunteerConnect",
+  "description": "A comprehensive platform for managing volunteer activities, registrations, and community impact.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
